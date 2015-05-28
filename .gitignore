@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+ftir_env1.iml
+target
+*.log
+/application.properties
