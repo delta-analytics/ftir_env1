@@ -25,4 +25,8 @@ public class UserService {
             LOGGER.warn("Superuser allready existing");
         }
     }
+
+    public User readUser(String account, String password){
+        return userRepository.findByAccountAndPassword(account, password);
+    }
 }
