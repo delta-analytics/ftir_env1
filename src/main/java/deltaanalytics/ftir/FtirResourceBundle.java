@@ -12,7 +12,7 @@ public class FtirResourceBundle {
 
     @PostConstruct
     public void init() {
-        resourceBundle = ResourceBundle.getBundle("messages", Locale.GERMAN);
+        resourceBundle = ResourceBundle.getBundle("uicontrols", Locale.ENGLISH);
     }
 
     public ResourceBundle getResourceBundle() {

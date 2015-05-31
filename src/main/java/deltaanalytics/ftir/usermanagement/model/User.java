@@ -1,15 +1,15 @@
 package deltaanalytics.ftir.usermanagement.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class User {
     private Long id;
     private String account;
     private String password;
+    private Date lastLogin;
+    private Date createdAt;
 
     @Id()
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +37,13 @@ public class User {
         this.password = password;
     }
 
+    @PrePersist
+    private void timeStamps() {
+        if (createdAt == null) {
+            createdAt = new Date();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,5 +63,31 @@ public class User {
         result = 31 * result + account.hashCode();
         result = 31 * result + password.hashCode();
         return result;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", lastLogin=" + lastLogin +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

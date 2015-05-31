@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Main.class)
 public class CalibrationMenuFactoryTest {

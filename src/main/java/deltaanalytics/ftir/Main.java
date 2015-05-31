@@ -4,9 +4,7 @@ import deltaanalytics.ftir.main.view.MenuBarFactory;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
-import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,6 @@ public class Main extends AbstractJavaFxApplicationSupport {
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
-
         BorderPane root = new BorderPane();
         primaryStage.setTitle(ftirResourceBundle.getResourceBundle().getString("main.title"));
         MenuBar menuBar = menuBarFactory.build();
