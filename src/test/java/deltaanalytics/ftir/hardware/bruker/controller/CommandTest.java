@@ -1,8 +1,11 @@
-package deltaanalytics.ftir.hardware.bruker;
+package deltaanalytics.ftir.hardware.bruker.controller;
 
+import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -16,13 +19,13 @@ public class CommandTest {
         LocalDateTime now = LocalDateTime.now();
         command.setExecutionStartedAt(now);
         command.setExecutionFinishedAt(now.plusMinutes(1));
-        ParameterMap parameterMaps = new ParameterMap();
-        command.setParameterMap(parameterMaps);
+        List<BrukerConfigurationParameter> brukerConfigurationParameterList = Arrays.asList(new BrukerConfigurationParameter("APT", "APT"));
+        command.setBrukerConfigurationParameterList(brukerConfigurationParameterList);
 
         assertThat(command.getMessage(), is(notNullValue()));
         assertThat(command.getExecutionStartedAt(), is(now));
         assertThat(command.getExecutionFinishedAt(), is(now.plusMinutes(1)));
         assertThat(command.getExecutionFinishedAt(), is(now.plusMinutes(1)));
-        assertThat(command.getParameterMap(), is(notNullValue()));
+        assertThat(command.getBrukerConfigurationParameterList(), is(notNullValue()));
     }
 }

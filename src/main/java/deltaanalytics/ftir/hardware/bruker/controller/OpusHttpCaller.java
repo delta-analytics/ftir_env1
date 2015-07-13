@@ -1,4 +1,4 @@
-package deltaanalytics.ftir.hardware.bruker;
+package deltaanalytics.ftir.hardware.bruker.controller;
 
 import org.springframework.stereotype.Component;
 

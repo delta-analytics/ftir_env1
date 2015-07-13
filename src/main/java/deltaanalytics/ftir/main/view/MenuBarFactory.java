@@ -4,6 +4,7 @@ import deltaanalytics.ftir.calibration.view.CalibrationMenuFactory;
 import deltaanalytics.ftir.measurement.view.MeasurementMenuFactory;
 import deltaanalytics.ftir.usermanagement.view.UserManagementMenuFactory;
 import javafx.scene.control.MenuBar;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,15 +28,15 @@ public class MenuBarFactory {
     @Autowired
     StatisticMenuFactory statisticMenuFactory;
 
-    public MenuBar build() {
+    public MenuBar build(Stage primaryStage) {
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(
-                fileMenuFactory.build(),
-                calibrationMenuFactory.build(),
-                measurementMenuFactory.build(),
-                statisticMenuFactory.build(),
-                userManagementMenuFactory.build(),
-                helpMenuFactory.build());
+                fileMenuFactory.build(primaryStage),
+                calibrationMenuFactory.build(primaryStage),
+                measurementMenuFactory.build(primaryStage),
+                statisticMenuFactory.build(primaryStage),
+                userManagementMenuFactory.build(primaryStage),
+                helpMenuFactory.build(primaryStage));
         return menuBar;
     }
 }

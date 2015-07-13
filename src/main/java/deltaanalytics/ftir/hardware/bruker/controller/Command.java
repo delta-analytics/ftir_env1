@@ -1,4 +1,6 @@
-package deltaanalytics.ftir.hardware.bruker;
+package deltaanalytics.ftir.hardware.bruker.controller;
+
+import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -7,7 +9,7 @@ public class Command {
     private String message;
     private LocalDateTime executionStartedAt;
     private LocalDateTime executionFinishedAt;
-    private ParameterMap parameterMap;
+    private List<BrukerConfigurationParameter> brukerConfigurationParameterList;
 
     public void setMessage(String message) {
         this.message = message;
@@ -33,12 +35,12 @@ public class Command {
         return executionFinishedAt;
     }
 
-    public void setParameterMap(ParameterMap parameterMaps) {
-        this.parameterMap = parameterMaps;
+    public void setBrukerConfigurationParameterList(List<BrukerConfigurationParameter> parameterMaps) {
+        this.brukerConfigurationParameterList = parameterMaps;
     }
 
-    public ParameterMap getParameterMap() {
-        return parameterMap;
+    public List<BrukerConfigurationParameter> getBrukerConfigurationParameterList() {
+        return brukerConfigurationParameterList;
     }
 
     //ToDo Hier wird der komplette Request gebaut, momentan ohne ParameterMap

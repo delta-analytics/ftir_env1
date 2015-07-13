@@ -130,7 +130,7 @@ public class LoginFactory {
             if (userService.readUser(accountTX.getText(), passfield.getText()) != null) {
                 BorderPane root = new BorderPane();
                 primaryStage.setTitle(ftirResourceBundle.getResourceBundle().getString("main.title"));
-                MenuBar menuBar = menuBarFactory.build();
+                MenuBar menuBar = menuBarFactory.build(primaryStage);
                 root.setTop(menuBar);
                 primaryStage.setScene(new Scene(root));
                 Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();

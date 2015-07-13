@@ -1,5 +1,6 @@
-package deltaanalytics.ftir.hardware.bruker;
+package deltaanalytics.ftir.hardware.bruker.controller;
 
+import deltaanalytics.ftir.hardware.bruker.controller.OpusHttpCaller;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
