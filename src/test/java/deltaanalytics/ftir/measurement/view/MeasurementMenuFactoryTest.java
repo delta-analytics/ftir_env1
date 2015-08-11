@@ -12,7 +12,7 @@ import static org.mockito.Mockito.mock;
 public class MeasurementMenuFactoryTest {
     @Test
     public void buildMeasurementMenuInCorrectOrder() {
-        Menu menu = MeasurementMenuFactory.build(mock(Stage.class));
+        Menu menu = new MeasurementMenuFactory().build(mock(Stage.class));
 
         assertThat(menu.getText(), is(equalTo("Messen")));
         assertThat(menu.getItems().get(0).getText(), is(equalTo("Übersicht")));

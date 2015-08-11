@@ -11,6 +11,7 @@ public class StatisticMenuFactory {
         Menu statisticMenu = new Menu("Statistik");
         MenuItem menuItemStatisticOverview = new MenuItem("Übersicht");
         statisticMenu.getItems().addAll(menuItemStatisticOverview);
+        statisticMenu.setDisable(true);
         return statisticMenu;
     }
 }

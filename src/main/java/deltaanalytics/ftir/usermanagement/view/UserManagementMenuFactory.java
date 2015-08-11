@@ -12,6 +12,7 @@ public class UserManagementMenuFactory {
         MenuItem menuItemUserOverview = new MenuItem("Übersicht");
         MenuItem menuItemUserCreate = new MenuItem("Nutzer anlegen");
         userManagementMenu.getItems().addAll(menuItemUserOverview, menuItemUserCreate);
+        userManagementMenu.setDisable(true);
         return userManagementMenu;
     }
 }

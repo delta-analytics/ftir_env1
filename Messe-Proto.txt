@@ -1,0 +1,10 @@
+Aktionen für die Messung:
+1. Referenzmessung per HTTP-Befehl (Übergabe von nur 2 (String-)Parametern: EXP (=Standardparameterfile) und XPP (=Pfad zum Experiment)
+2. Probenmessung per HTTP-Befehl (Übergabe von nur 2 (String-)Parametern: EXP (=Standardparameterfile) und XPP (=Pfad zum Experiment)
+3. Speichern per HTTP-Befehl. Hierfür muss die Anwort von Bruker aus Punkt 2 ausgewertet werden und die File-ID, Pfad und Dateiname als Parameter mit übergeben werden)
+
+Aktionen für die Berechnung:
+Aufrufen des Kenai-Java-Programms (Prototyp = CallNonlinearFit.java), in dem neben dem Dateinamen noch einige weitere Parameter übergeben werden. Die Parameter müssen in einen String eingebaut werden damit der Befehl octave.eval(...) innerhalb einer JAVA-Methode ausgeführt werden kann.
+
+Aktionen für die Ausgabe:
+Auslesen der fit-Parameter über octave.get(...) und runden des Ergebnisses. Darstellung im GUI-Fenster. Eventuell Ausgabe eines Fit-Plot mit OCTAVE/GNU-PLOT. Hierfür können fest eingestellte octave.eval(...) verwendet werden.

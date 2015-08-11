@@ -72,12 +72,14 @@ public class LoginFactory {
         Label vornameLB = new Label("Account:");
         grid.add(vornameLB, 1, 2);
         TextField accountTX = new TextField();
+        accountTX.setText("superuser");
         grid.add(accountTX, 2, 2);
         //grid.getRowConstraints().add(0,new RowConstraints(40));
 
         Label passwordLB = new Label("Passwort:");
         grid.add(passwordLB, 1, 3);
         PasswordField passfield = new PasswordField();
+        passfield.setText("superuser");
         passfield.setPromptText("password eingeben");
 
 
@@ -104,7 +106,7 @@ public class LoginFactory {
         CheckBox pw_sichtbar = new CheckBox("Passwort sichtbar gibts nicht");
         pw_sichtbar.setAllowIndeterminate(false);
         pw_sichtbar.setSelected(true);
-        grid.add(pw_sichtbar, 2, 6);
+        //grid.add(pw_sichtbar, 2, 6);
 
         HBox hbBtn = new HBox(10);  //hier nicht sinnvoll
         hbBtn.setAlignment(Pos.BOTTOM_CENTER);
@@ -134,10 +136,10 @@ public class LoginFactory {
                 root.setTop(menuBar);
                 primaryStage.setScene(new Scene(root));
                 Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-                primaryStage.setX(primaryScreenBounds.getMinX());
-                primaryStage.setY(primaryScreenBounds.getMinY());
-                primaryStage.setWidth(primaryScreenBounds.getWidth());
-                primaryStage.setHeight(primaryScreenBounds.getHeight());
+                //primaryStage.setX(primaryScreenBounds.getMinX());
+                //primaryStage.setY(primaryScreenBounds.getMinY());
+                //primaryStage.setWidth(primaryScreenBounds.getWidth());
+                //primaryStage.setHeight(primaryScreenBounds.getHeight());
                 primaryStage.show();
             } else {
                 meldungTX.setText("Account oder Passwort nicht korrekt");

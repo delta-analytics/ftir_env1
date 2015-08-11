@@ -12,6 +12,7 @@ public class HelpMenuFactory {
         MenuItem menuItemHelp = new MenuItem("Dr. Delta fragen..");
         MenuItem menuItemGlossar = new MenuItem("Glossar");
         helpMenu.getItems().addAll(menuItemHelp, menuItemGlossar);
+        helpMenu.setDisable(true);
         return helpMenu;
     }
 }

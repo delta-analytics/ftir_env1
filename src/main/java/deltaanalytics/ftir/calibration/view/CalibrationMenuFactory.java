@@ -17,6 +17,7 @@ public class CalibrationMenuFactory {
         MenuItem menuItemCalibrationOverview = new MenuItem("Übersicht");
         MenuItem menuItemCalibrationStart = new MenuItem("Starten");
         calibrationMenu.getItems().addAll(menuItemCalibrationOverview, menuItemCalibrationStart);
+        calibrationMenu.setDisable(true);
         return calibrationMenu;
     }
 

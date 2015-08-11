@@ -3,19 +3,18 @@ package deltaanalytics.ftir.hardware.bruker.view;
 import deltaanalytics.ftir.hardware.bruker.controller.BrukerConfigurationService;
 import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
 import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameterOption;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,7 +30,7 @@ public class BrukerParameterView {
 
     public void show(Stage primaryStage) {
         List<BrukerConfigurationParameter> brukerConfigurationParameterList = brukerConfigurationService.readAll();
-
+        Stage stage = new Stage();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -49,26 +48,27 @@ public class BrukerParameterView {
             Label paramDesc = new Label(brukerConfigurationParameter.getDescription());
             grid.add(paramDesc, 1, y);
 
-            TextField paramValue = new TextField();
-            grid.add(paramValue, 2, y);
 
-            StringBuilder options = new StringBuilder();
+            List<String> options = new ArrayList<>();
+            ComboBox<String> comboBox = new ComboBox<>();
             for (BrukerConfigurationParameterOption brukerConfigurationParameterOption : brukerConfigurationParameter.getBrukerConfigurationParameterOptions()) {
-                options.append(brukerConfigurationParameterOption.getValue());
-                options.append(", ");
+                options.add(brukerConfigurationParameterOption.getValue());
             }
-            String optionString = options.toString();
-            if(optionString.length()>0){
-                optionString = optionString.substring(0, optionString.length()-2);
+            if (!options.isEmpty()) {
+                comboBox.getItems().addAll(options);
+                grid.add(comboBox, 2, y);
+            } else {
+                TextField paramValue = new TextField();
+                grid.add(paramValue, 2, y);
             }
-            Label possibleOptions = new Label(optionString);
-            grid.add(possibleOptions, 3, y);
-            y += 1;
+            y+=1;
         }
 
         ScrollPane scrollPane = new ScrollPane(grid);
-        Scene scene = new Scene(scrollPane, 300, 275);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Scene scene = new Scene(scrollPane, 800, 600);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(primaryStage);
+        stage.setScene(scene);
+        stage.show();
     }
 }

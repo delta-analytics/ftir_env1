@@ -15,10 +15,13 @@ public class FileMenuFactory {
     public Menu build(Stage primaryStage) {
         Menu fileMenu = new Menu("Datei");
         MenuItem menuItemSettings = new MenuItem("Einstellungen");
+        menuItemSettings.setDisable(true);
         MenuItem menuItemBrukerParameter = new MenuItem("Bruker Parameter");
         menuItemBrukerParameter.setOnAction(t -> brukerParameterView.show(primaryStage));
         MenuItem menuItemInfo = new MenuItem("Info");
+        menuItemInfo.setDisable(true);
         MenuItem menuItemSystemState = new MenuItem("Systemstatus");
+        menuItemSystemState.setDisable(true);
         MenuItem menuItemBeenden = new MenuItem("Beenden");
         menuItemBeenden.setOnAction(t -> System.exit(0));
         fileMenu.getItems().addAll(menuItemSettings, menuItemBrukerParameter, menuItemInfo, menuItemSystemState, menuItemBeenden);

@@ -16,9 +16,10 @@ public class FileMenuFactoryTest {
 
         assertThat(menu.getText(), is(equalTo("Datei")));
         assertThat(menu.getItems().get(0).getText(), is(equalTo("Einstellungen")));
-        assertThat(menu.getItems().get(1).getText(), is(equalTo("Info")));
-        assertThat(menu.getItems().get(2).getText(), is(equalTo("Systemstatus")));
-        assertThat(menu.getItems().get(3).getText(), is(equalTo("Beenden")));
+        assertThat(menu.getItems().get(1).getText(), is(equalTo("Bruker Parameter")));
+        assertThat(menu.getItems().get(2).getText(), is(equalTo("Info")));
+        assertThat(menu.getItems().get(3).getText(), is(equalTo("Systemstatus")));
+        assertThat(menu.getItems().get(4).getText(), is(equalTo("Beenden")));
     }
 
 }

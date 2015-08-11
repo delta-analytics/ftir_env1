@@ -1,0 +1,7 @@
+die Liste der möglichen Parameter gebe ich dir am Montag. In der Regel werden alle Parameter (für die Steuerung des FTIR) beibehalten und es genügt 2 Parameter zu übergeben (Experiment und Pfad)
+http://localhost/OpusCommand.htm?MeasureSample (0, {EXP='frank.xpm', XPP='C:\OPUS_7.0.129\XPM'});
+
+weitere Parameter (3 letter codes) z.B. beim abspeichern
+{DAP='C:\OPUS_7.0.129\MEAS3', OEX='0', SAN='Test24.1.dpt', COF=64, INP='C:\OPUS_7.0.129\METHODS', IFP='C:\OPUS_7.0.129\METHODS', INM='DEFAULT', IFN='DEFAULT', DPA=6, DPO=6, SEP=',', YON='0', ADP='1', X64='0'})
+
+
