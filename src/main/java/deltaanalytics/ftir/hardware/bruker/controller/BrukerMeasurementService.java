@@ -1,6 +1,8 @@
 package deltaanalytics.ftir.hardware.bruker.controller;
 
 import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
+import deltaanalytics.ftir.hardware.bruker.model.MeasurementResponse;
+import deltaanalytics.ftir.hardware.bruker.model.ReferenceMeasurementResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,12 @@ public class BrukerMeasurementService {
         command.getBrukerConfigurationParameterList().add(buildFrom("EXP", exp));
         command.getBrukerConfigurationParameterList().add(buildFrom("XPP", xpp));
         referenceMeasurementCommandProcessor.run(command);
+        ReferenceMeasurementResponse referenceMeasurementResponse = new ReferenceMeasurementResponse(command.getResponse());
+        if (referenceMeasurementResponse.successfull()) {
+            LOGGER.info("ReferenceMeasurement successfull finished");
+        } else {
+            LOGGER.error("ReferenceMeasurement not successfull finished =>" + referenceMeasurementResponse.getErrorCode());
+        }
     }
 
     //Beispiel: http://localhost/OpusCommand.htm?MeasureSample (0, {EXP='frank.xpm', XPP='C:\OPUS_7.0.129\XPM'})
@@ -35,6 +43,16 @@ public class BrukerMeasurementService {
         command.getBrukerConfigurationParameterList().add(buildFrom("EXP", exp));
         command.getBrukerConfigurationParameterList().add(buildFrom("XPP", xpp));
         measurementCommandProcessor.run(command);
+        MeasurementResponse measurementResponse = new MeasurementResponse(command.getResponse());
+        if (command.getException() == null) {
+            Command saveCommand = new Command();
+            command.setMessage("http://localhost/OpusCommand.htm?SaveAs");
+            command.getBrukerConfigurationParameterList().add(buildFrom("DAP", measurementResponse.getDAP()));
+            command.getBrukerConfigurationParameterList().add(buildFrom("SAN", measurementResponse.getSAN()));
+            measurementCommandProcessor.run(saveCommand);
+        } else {
+            LOGGER.error("Measurement Exception, no saveAs Command allowed");
+        }
     }
 
     private BrukerConfigurationParameter buildFrom(String key, String value) {

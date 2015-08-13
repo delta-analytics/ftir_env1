@@ -16,7 +16,6 @@ public class MeasurementCommandProcessor {
     public void run(Command command) {
         command.setExecutionStartedAt(LocalDateTime.now());
         String completeMessage = command.buildCompleteMessage();
-        LOGGER.info("run " + completeMessage);
         try {
             command.setResponse(opusHttpCaller.run(completeMessage));
         } catch (Exception e) {

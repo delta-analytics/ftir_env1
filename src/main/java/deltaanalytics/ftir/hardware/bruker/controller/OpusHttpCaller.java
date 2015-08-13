@@ -14,7 +14,7 @@ public class OpusHttpCaller {
     private static final Logger LOGGER = LoggerFactory.getLogger(OpusHttpCaller.class);
 
     public String run(String completeMessage) {
-        LOGGER.info("run " + completeMessage);
+        LOGGER.info("run against Opus HTTP => " + completeMessage);
         StringBuilder response = new StringBuilder();
         URL obj;
         try {
