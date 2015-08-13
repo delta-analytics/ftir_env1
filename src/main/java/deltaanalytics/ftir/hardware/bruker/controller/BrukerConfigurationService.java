@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -52,8 +51,8 @@ public class BrukerConfigurationService {
         Properties brukerConfigurationParameterOptions = getProperties("src/main/resources/bruker_configuration_parameter_options_en.properties");
         for (Map.Entry<Object, Object> keyAndValue : brukerConfigurationParameterOptions.entrySet()) {
             LOGGER.info("" + keyAndValue);
-            BrukerConfigurationParameterOption brukerConfigurationParameterOption = new BrukerConfigurationParameterOption((String)keyAndValue.getKey(),(String) keyAndValue.getValue());
-            String parameterKey =((String) keyAndValue.getKey()).split("\\.")[0];
+            BrukerConfigurationParameterOption brukerConfigurationParameterOption = new BrukerConfigurationParameterOption((String) keyAndValue.getKey(), (String) keyAndValue.getValue());
+            String parameterKey = ((String) keyAndValue.getKey()).split("\\.")[0];
             brukerConfigurationParameterOption.setValue((String) keyAndValue.getValue());
             brukerConfigurationParameterOption.setKey(((String) keyAndValue.getKey()));
             brukerConfigurationParameterOptionRepository.save(brukerConfigurationParameterOption);

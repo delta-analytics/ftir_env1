@@ -13,7 +13,9 @@ public class BrukerConfigurationParameterOption {
     private String description;
     private String locale;
 
-    public BrukerConfigurationParameterOption(){}
+    public BrukerConfigurationParameterOption() {
+    }
+
     public BrukerConfigurationParameterOption(String key, String description) {
         this.key = key;
         this.description = description;

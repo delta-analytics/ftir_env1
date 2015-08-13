@@ -9,7 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -144,7 +147,7 @@ public class LoginFactory {
             } else {
                 meldungTX.setText("Account oder Passwort nicht korrekt");
                 int depth = 70; //Setting the uniform variable for the glow width and height
-                DropShadow borderGlow= new DropShadow();
+                DropShadow borderGlow = new DropShadow();
                 borderGlow.setOffsetY(0f);
                 borderGlow.setOffsetX(0f);
                 borderGlow.setColor(Color.RED);

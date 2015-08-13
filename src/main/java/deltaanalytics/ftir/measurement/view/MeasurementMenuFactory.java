@@ -21,7 +21,7 @@ public class MeasurementMenuFactory {
     }
 
     @Autowired
-    private void setBrukerMeasurementView(BrukerMeasurementView brukerMeasurementView){
+    private void setBrukerMeasurementView(BrukerMeasurementView brukerMeasurementView) {
         this.brukerMeasurementView = brukerMeasurementView;
     }
 }

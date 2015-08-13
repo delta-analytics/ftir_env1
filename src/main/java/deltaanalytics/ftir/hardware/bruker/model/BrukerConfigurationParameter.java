@@ -14,7 +14,8 @@ public class BrukerConfigurationParameter {
 
     private List<BrukerConfigurationParameterOption> brukerConfigurationParameterOptions = new ArrayList<>();
 
-    public BrukerConfigurationParameter(){}
+    public BrukerConfigurationParameter() {
+    }
 
     public BrukerConfigurationParameter(String key, String description) {
         this.key = key;

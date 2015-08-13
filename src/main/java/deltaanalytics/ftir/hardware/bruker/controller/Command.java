@@ -1,16 +1,22 @@
 package deltaanalytics.ftir.hardware.bruker.controller;
 
 import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class Command {
     private String message;
     private LocalDateTime executionStartedAt;
     private LocalDateTime executionFinishedAt;
     private List<BrukerConfigurationParameter> brukerConfigurationParameterList = new ArrayList<>();
+    private Exception exception;
+    private String response;
+    private OpusHttpCaller opusHttpCaller;
 
     public void setMessage(String message) {
         this.message = message;
@@ -59,8 +65,24 @@ public class Command {
             stringBuilder.append("\'");
             stringBuilder.append(", ");
         }
-        stringBuilder.replace(stringBuilder.length()-2, stringBuilder.length(),"");
+        stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "");
         stringBuilder.append("})");
         return stringBuilder.toString();
+    }
+
+    public Exception getException() {
+        return exception;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getResponse() {
+        return response;
     }
 }

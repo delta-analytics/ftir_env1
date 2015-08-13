@@ -26,7 +26,7 @@ public class UserService {
         }
     }
 
-    public User readUser(String account, String password){
+    public User readUser(String account, String password) {
         return userRepository.findByAccountAndPassword(account, password);
     }
 }

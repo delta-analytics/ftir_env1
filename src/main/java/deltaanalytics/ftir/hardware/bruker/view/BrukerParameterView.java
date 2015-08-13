@@ -61,7 +61,7 @@ public class BrukerParameterView {
                 TextField paramValue = new TextField();
                 grid.add(paramValue, 2, y);
             }
-            y+=1;
+            y += 1;
         }
 
         ScrollPane scrollPane = new ScrollPane(grid);
