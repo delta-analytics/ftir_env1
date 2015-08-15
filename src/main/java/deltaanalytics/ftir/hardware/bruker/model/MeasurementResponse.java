@@ -16,5 +16,9 @@ public class MeasurementResponse {
         String fileWithPath = rawResponse.split(" ")[2];
         return fileWithPath.substring(fileWithPath.lastIndexOf("\\")+1, fileWithPath.length()-1).trim();
     }
+    
+    public String getFileId(){
+        return rawResponse.split(" ")[4];
+    }
 
 }

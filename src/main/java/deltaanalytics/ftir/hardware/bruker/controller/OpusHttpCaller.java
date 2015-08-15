@@ -8,22 +8,23 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 
 @Component
 public class OpusHttpCaller {
     private static final Logger LOGGER = LoggerFactory.getLogger(OpusHttpCaller.class);
 
     public String run(String completeMessage) {
-        LOGGER.info("run against Opus HTTP => " + completeMessage);
+        
         StringBuilder response = new StringBuilder();
         URL obj;
         try {
+            LOGGER.info("run against Opus HTTP => " + completeMessage);
             obj = new URL(completeMessage);
 
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-            int responseCode = con.getResponseCode();
-            LOGGER.info("Response Code : " + responseCode);
+con.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));

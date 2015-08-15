@@ -24,6 +24,19 @@ public class MeasurementCommandProcessor {
         command.setExecutionFinishedAt(LocalDateTime.now());
 
     }
+    
+    public void run(String fileId, Command command) {
+        command.setExecutionStartedAt(LocalDateTime.now());
+        String completeMessage = command.buildCompleteMessage();
+        completeMessage.replaceFirst("0", "["+fileId+":AB]");
+                try {
+            command.setResponse(opusHttpCaller.run(completeMessage));
+        } catch (Exception e) {
+            command.setException(e);
+        }
+        command.setExecutionFinishedAt(LocalDateTime.now());
+
+    }
 
     @Autowired
     public void setOpusHttpCaller(OpusHttpCaller opusHttpCaller) {

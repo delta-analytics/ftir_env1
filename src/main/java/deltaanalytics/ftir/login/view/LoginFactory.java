@@ -3,6 +3,7 @@ package deltaanalytics.ftir.login.view;
 import deltaanalytics.ftir.FtirResourceBundle;
 import deltaanalytics.ftir.main.view.MenuBarFactory;
 import deltaanalytics.ftir.usermanagement.controller.UserService;
+import java.awt.SplashScreen;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -35,6 +36,7 @@ public class LoginFactory {
 
 
     public void build(Stage primaryStage) {
+ 
         // +++++++++++++++++++++++++++++++++++++++++++++
         // Center
         // +++++++++++++++++++++++++++++++++++++++++++++

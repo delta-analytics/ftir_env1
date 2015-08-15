@@ -1,6 +1,7 @@
 package deltaanalytics.ftir;
 
 import deltaanalytics.ftir.login.view.LoginFactory;
+import java.awt.SplashScreen;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,5 +21,6 @@ public class Main extends AbstractJavaFxApplicationSupport {
 
     public static void main(String[] args) {
         launchApp(Main.class, args);
+        
     }
 }

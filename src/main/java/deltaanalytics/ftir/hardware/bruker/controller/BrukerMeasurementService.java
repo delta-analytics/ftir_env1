@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import dk.ange.octave.OctaveEngine;
 
 import javax.transaction.Transactional;
 
@@ -36,6 +37,7 @@ public class BrukerMeasurementService {
 
     //Beispiel: http://localhost/OpusCommand.htm?MeasureSample (0, {EXP='frank.xpm', XPP='C:\OPUS_7.0.129\XPM'})
     //Response ist z.B. 'OK 1 "C:\OPUS_7.0.129\MEAS3\Test24.1" 1 654 0', daraus ist die file ID 654 und der Pfad+Dateiname zu entnehmen um abzuspeichern
+    //SaveAs http://localhost/OpusCommand.htm?SaveAs ([654:AB], {DAP='C:\OPUS_7.0.129\MEAS3', OEX='0', SAN='Test24.1.dpt'})
     public void runMeasurement(String exp, String xpp) {
         LOGGER.info("runMeasurement");
         Command command = new Command();
@@ -49,7 +51,7 @@ public class BrukerMeasurementService {
             command.setMessage("http://localhost/OpusCommand.htm?SaveAs");
             command.getBrukerConfigurationParameterList().add(buildFrom("DAP", measurementResponse.getDAP()));
             command.getBrukerConfigurationParameterList().add(buildFrom("SAN", measurementResponse.getSAN()));
-            measurementCommandProcessor.run(saveCommand);
+            measurementCommandProcessor.run(measurementResponse.getFileId(), saveCommand);
         } else {
             LOGGER.error("Measurement Exception, no saveAs Command allowed");
         }

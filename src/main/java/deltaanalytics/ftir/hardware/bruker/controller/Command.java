@@ -1,6 +1,8 @@
 package deltaanalytics.ftir.hardware.bruker.controller;
 
 import deltaanalytics.ftir.hardware.bruker.model.BrukerConfigurationParameter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -55,18 +57,22 @@ public class Command {
     //Message + params
     public String buildCompleteMessage() {
         StringBuilder stringBuilder = new StringBuilder();
+        try{
         stringBuilder.append(message);
-        stringBuilder.append(" (0, {");
+        stringBuilder.append(URLEncoder.encode(" (0, {", "UTF-8"));
         for (BrukerConfigurationParameter brukerConfigurationParameter : brukerConfigurationParameterList) {
             stringBuilder.append(brukerConfigurationParameter.getKey());
-            stringBuilder.append("=");
-            stringBuilder.append("\'");
-            stringBuilder.append(brukerConfigurationParameter.getValue());
-            stringBuilder.append("\'");
-            stringBuilder.append(", ");
+            stringBuilder.append(URLEncoder.encode("=", "UTF-8"));
+            stringBuilder.append(URLEncoder.encode("\'", "UTF-8"));
+            stringBuilder.append(URLEncoder.encode(brukerConfigurationParameter.getValue(), "UTF-8"));
+            stringBuilder.append(URLEncoder.encode("\'", "UTF-8"));
+            stringBuilder.append(URLEncoder.encode(", ", "UTF-8"));
         }
         stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "");
-        stringBuilder.append("})");
+        stringBuilder.append(URLEncoder.encode("})", "UTF-8"));
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
         return stringBuilder.toString();
     }
 

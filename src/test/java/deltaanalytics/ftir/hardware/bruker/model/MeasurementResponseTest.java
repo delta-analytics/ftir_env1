@@ -17,4 +17,9 @@ public class MeasurementResponseTest {
         MeasurementResponse measurementResponse = new MeasurementResponse("OK 1 \"C:\\OPUS_7.0.129\\MEAS3\\Test24.1\" 1 654 0");
         assertThat(measurementResponse.getSAN(), is(equalTo("Test24.1")));
     }
+    @Test
+    public void getFileId(){
+        MeasurementResponse measurementResponse = new MeasurementResponse("OK 1 \"C:\\OPUS_7.0.129\\MEAS3\\Test24.1\" 1 654 0");
+        assertThat(measurementResponse.getFileId(), is(equalTo("654")));
+    }
 }
