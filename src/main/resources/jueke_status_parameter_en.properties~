@@ -1,0 +1,32 @@
+=Pump Status on/off
+=Pump Power 0...100%
+
+=Pressure Set Point 0...10000 mbar
+=Pressure actual 0...10000 mbar
+=Pressure regulation active? yes/no
+
+=Heater Temperature 0.00...60.00°C
+=Heater regulation active? yes/no
+=Heater Power 0...100%
+=Heater Temperature setpoint reached? yes/no
+
+=Temperature PT100 (1) 0.00...120.00°C
+=Temperature PT100 (2) 0.00...120.00°C
+
+=Valves
+1 on/off
+2 on/off
+3 on/off
+4 on/off
+5 on/off
+6 on/off
+7 on/off
+
+=Error code
+0=no error
+1=μC Error
+50=Pressure sensor error (PIRC1)
+100=Temperature sensor error
+
+
+

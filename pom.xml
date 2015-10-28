@@ -45,7 +45,11 @@
             <scope>system</scope>
             <systemPath>${basedir}/octave/javaoctave-0.6.4.jar</systemPath>
         </dependency>
-
+        <dependency>
+            <groupId>org.rxtx</groupId>
+            <artifactId>rxtx</artifactId>
+            <version>2.1.7</version>
+        </dependency>
     </dependencies>
 
     <properties>

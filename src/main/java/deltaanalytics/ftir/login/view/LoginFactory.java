@@ -22,6 +22,10 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+//// used to test Jueke serial connection at Login
+//import deltaanalytics.ftir.hardware.jueke.controller.JuekeSerialConnection;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 @Component
 public class LoginFactory {
@@ -135,17 +139,30 @@ public class LoginFactory {
         loginBtn.setOnAction(event -> {
             meldungTX.setText("Prüfung noch nicht eingebunden!!!");
             if (userService.readUser(accountTX.getText(), passfield.getText()) != null) {
-                BorderPane root = new BorderPane();
-                primaryStage.setTitle(ftirResourceBundle.getResourceBundle().getString("main.title"));
-                MenuBar menuBar = menuBarFactory.build(primaryStage);
-                root.setTop(menuBar);
-                primaryStage.setScene(new Scene(root));
-                Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-                //primaryStage.setX(primaryScreenBounds.getMinX());
-                //primaryStage.setY(primaryScreenBounds.getMinY());
-                //primaryStage.setWidth(primaryScreenBounds.getWidth());
-                //primaryStage.setHeight(primaryScreenBounds.getHeight());
-                primaryStage.show();
+                    BorderPane root = new BorderPane();
+                    primaryStage.setTitle(ftirResourceBundle.getResourceBundle().getString("main.title"));
+                    MenuBar menuBar = menuBarFactory.build(primaryStage);
+                    root.setTop(menuBar);
+                    primaryStage.setScene(new Scene(root));
+                    Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+                    //primaryStage.setX(primaryScreenBounds.getMinX());
+                    //primaryStage.setY(primaryScreenBounds.getMinY());
+                    //primaryStage.setWidth(primaryScreenBounds.getWidth());
+                    //primaryStage.setHeight(primaryScreenBounds.getHeight());
+//                try {                    
+//                    // test Jueke part at Login
+//                    // !!!! first setup virtual ports like
+//                    // !!!! sudo socat -d -d PTY,link=/dev/ttyS10 PTY,link=/dev/ttyS11
+//                    // !!!! sudo chmod 777 /dev/ttyS10 /dev/ttyS11
+//                    // !!!! gtkterm using port setting /dev/ttyS10 
+//                    // !!!! with 57600 baud rate, using "local echo" and "CR LF Auto"
+//                    JuekeSerialConnection connection = new JuekeSerialConnection();
+//                    connection.performTests(false);
+//                    connection.findPortToConnect();
+                    primaryStage.show();
+//                } catch (Exception ex) {
+//                    Logger.getLogger(LoginFactory.class.getName()).log(Level.SEVERE, null, ex);
+//                }
             } else {
                 meldungTX.setText("Account oder Passwort nicht korrekt");
                 int depth = 70; //Setting the uniform variable for the glow width and height
