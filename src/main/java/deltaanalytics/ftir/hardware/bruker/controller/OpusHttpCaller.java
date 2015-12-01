@@ -24,7 +24,7 @@ public class OpusHttpCaller {
             obj = new URL(completeMessage);
 
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+            con.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
