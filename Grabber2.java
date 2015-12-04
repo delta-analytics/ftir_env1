@@ -12,12 +12,13 @@ public class Grabber2 {
   public static void main(String[] args) {
 
       int port = 80;
-	int file_id = 467;
-	String file_name = "TestSoftware.53.dpt";
+	int file_id = 673;
+	String sample = "TestSoft";
+	String file_name = "TestSoft.0.dpt";
       //String urlString = "http://localhost:80/OpusCommand.htm?MeasureReference (0, {EXP='frank.xpm', XPP='C:\\OPUS_7.0.129\\XPM'})";
-      //String urlString = "http://localhost:80/OpusCommand.htm?MeasureSample (0, {EXP='frank.xpm', XPP='C:\\OPUS_7.0.129\\XPM'})";
+      String urlString = "http://localhost:80/OpusCommand.htm?MeasureSample (0, {EXP='frank.xpm', XPP='C:\\OPUS_7.0.129\\XPM', SNM='"+sample+"', NSS=16}";
 	//String urlString = "http://localhost/OpusCommand.htm?SaveAs (["+file_id+"]:AB], {DAP='C:\\OPUS_7.0.129\\MEAS3', OEX='0', SAN='"+file_name+"', COF=64})";
-	String urlString = "http://localhost/OpusCommand.htm?Unload (["+file_id+"], {})";  // feed ID of file to unload in Bruker software
+	//String urlString = "http://localhost/OpusCommand.htm?Unload (["+file_id+"], {})";  // feed ID of file to unload in Bruker software
       try {
          URL url = new URL(urlString);  // take string
          URI uri = new URI(url.getProtocol(),  // make uri to get correct encoding for sending the request
