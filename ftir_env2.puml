@@ -1,0 +1,123 @@
+@startuml
+skinparam componentStyle uml2
+
+title <b>FTIR PROJECT - components</b>
+
+folder "ftir_env2 / JAVA" {
+
+    node BRUKER{
+      [talk via LAN/\nlocalhost]
+    }
+    node JUEKE{
+      [talk via USB/\nSerial(RXTX)]
+    }
+    node GUI{
+      [Java-FX]
+    }
+    node MATH{
+      [Kenai-Project\njavaoctave]
+    }
+    node ABLAUFSTEUERUNG{
+      [list of actions]
+      [gui controller]
+    }
+  
+}
+
+database "db H2" {
+  frame "bruker" {
+    interface data1
+  }
+  frame "Jueke" {
+    interface data2
+  }
+  frame "Math" {
+    interface data3
+  }
+}
+
+legend left
+  TOOLS
+  Maven
+  Java-8-FX
+  JPA/Hiberante/H2
+endlegend
+
+
+BRUKER --> data1
+JUEKE --> data2
+MATH --> data3
+GUI --> MATH
+GUI --> JUEKE
+GUI --> BRUKER
+[list of actions] -> GUI
+[gui controller] -> GUI
+
+
+newpage
+
+
+title <b>FTIR PROJECT - Ablaufsteuerung</b>
+
+package "Gui view"{
+  "interface"
+  package "Gui model"{
+    [user\ninterface]
+  }
+  frame "visible components"{
+      [show some graph\nshow concentrations\nof gas components]
+  }
+}
+
+package "Ablaufsteuerung" {
+
+  frame "to be processed"{
+    [list of actions]
+    [controller for instrumental layout]
+  }
+
+
+
+  node "n7"{
+      [calculate math\nwith octave]
+  }
+
+  node "n6"{
+      [calibrate\nmeasurement]
+  }
+  node "n5"{
+      [prepare\nmeasurement]
+  }
+  node "n4"{
+      [configure\nmeasurement]
+  }
+  node "n3"{
+      [continuous\nflow\nmeasurement]
+  }
+  node "n2"{
+    [many\nmeasurements]
+  }
+  node "n1"{
+      [one\nmeasurement]
+  }
+}
+
+
+note left of interface : one frame integrating\n\n-hardware control\n-sample handling\n-measurement sequence\n-calibration\n-calculus\n-display of results
+
+note bottom of "configure\nmeasurement" : configure\nmeasurement\nand ftir\nparameters
+note bottom of "prepare\nmeasurement" : purge\ninlet\nequilibrate
+note bottom of "calibrate\nmeasurement" : apply\ncalibration\ngas
+note bottom of "one\nmeasurement" : do one
+note bottom of "many\nmeasurements" : do many
+note bottom of "continuous\nflow\nmeasurement" : do continously
+[list of actions] <-> [user\ninterface]
+[controller for instrumental layout] <-> [user\ninterface]
+[list of actions] <-> n1
+[list of actions] <-> n2
+[list of actions] <-> n3
+[list of actions] <-> n4
+[list of actions] <-> n5
+[list of actions] <-> n6
+
+@enduml

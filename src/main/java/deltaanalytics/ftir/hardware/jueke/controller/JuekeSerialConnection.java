@@ -10,7 +10,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author frank
- * add dependency RXTX in NetBeans: goto "Dependencies" in Projects ftir_env1, right mouse click "AddDependency.." and Query: RXTX
+ * add dependency RXTX in NetBeans: goto "Dependencies" in Projects ftir_env1, 
+ * right mouse click on Dependencies in ftir_env1 tree "AddDependency.." and Query: RXTX
  */
 public class JuekeSerialConnection {
     
