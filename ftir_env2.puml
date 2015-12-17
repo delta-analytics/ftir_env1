@@ -17,6 +17,9 @@ folder "ftir_env2 / JAVA" {
     node MATH{
       [Kenai-Project\njavaoctave]
     }
+    node USER{
+      [user\nmanagement]
+    }
     node ABLAUFSTEUERUNG{
       [list of actions]
       [gui controller]
@@ -28,11 +31,14 @@ database "db H2" {
   frame "bruker" {
     interface data1
   }
-  frame "Jueke" {
+  frame "jueke" {
     interface data2
   }
-  frame "Math" {
+  frame "math" {
     interface data3
+  }
+  frame "user" {
+    interface data4
   }
 }
 
@@ -47,9 +53,11 @@ endlegend
 BRUKER --> data1
 JUEKE --> data2
 MATH --> data3
+USER --> data4
 GUI --> MATH
 GUI --> JUEKE
 GUI --> BRUKER
+GUI --> USER
 [list of actions] -> GUI
 [gui controller] -> GUI
 
